@@ -26,7 +26,6 @@ ActiveRecord::Schema.define(version: 2019_04_15_161237) do
   create_table "expenses", force: :cascade do |t|
     t.decimal "amount", precision: 8, scale: 2, null: false
     t.string "category", null: false
-    t.date "date", null: false
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
