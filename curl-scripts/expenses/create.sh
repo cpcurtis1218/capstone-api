@@ -7,7 +7,9 @@ curl "http://localhost:4741/expenses" \
   --data '{
     "expense": {
       "amount": "'"${AMT}"'",
-      "category": "'"${CAT}"'"
+      "category": "'"${CAT}"'",
+      "description": "'"${DESC}"'",
+      "charge_date": "'"${DATE}"'"
     }
   }'
 
