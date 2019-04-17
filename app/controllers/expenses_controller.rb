@@ -1,9 +1,9 @@
-class ExpensesController < ApplicationController
+class ExpensesController < ProtectedController
   before_action :set_expense, only: [:show, :update, :destroy]
 
   # GET /expenses
   def index
-    @expenses = Expense.all
+    @expenses = current_user.expenses
 
     render json: @expenses
   end
@@ -15,7 +15,7 @@ class ExpensesController < ApplicationController
 
   # POST /expenses
   def create
-    @expense = Expense.new(expense_params)
+    @expense = current_user.expenses.new(expense_params)
 
     if @expense.save
       render json: @expense, status: :created, location: @expense
@@ -41,11 +41,11 @@ class ExpensesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_expense
-      @expense = Expense.find(params[:id])
+      @expense = current_user.expenses.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
     def expense_params
-      params.require(:expense).permit(:amount, :category, :description, :chargeDate)
+      params.require(:expense).permit(:amount, :category, :description, :chargeDate, :user_id)
     end
 end
