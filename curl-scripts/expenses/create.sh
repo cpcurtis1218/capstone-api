@@ -10,7 +10,7 @@ curl "http://localhost:4741/expenses" \
       "amount": "'"${AMT}"'",
       "category": "'"${CAT}"'",
       "description": "'"${DESC}"'",
-      "chargeDate": "'"${DATE}"'"
+      "date": "'"${DATE}"'"
     }
   }'
 
